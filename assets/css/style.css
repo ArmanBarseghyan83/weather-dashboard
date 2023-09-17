@@ -1,0 +1,89 @@
+header {
+  background: #3754a4;
+  background: -moz-linear-gradient(left, #3754a4 0%, #4145d8 1%, #352975 100%);
+  background: -webkit-linear-gradient(
+    left,
+    #3754a4 0%,
+    #4145d8 1%,
+    #352975 100%
+  );
+  background: linear-gradient(to right, #3754a4 0%, #4145d8 1%, #352975 100%);
+  width: 100vw;
+}
+
+header h1 {
+  color: white;
+  padding: 0.5rem;
+  margin-left: 48%;
+}
+
+main {
+  display: flex;
+  justify-content: flex-start;
+}
+
+aside {
+    margin: 0 1rem;
+    flex-basis: 22%;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: .4rem;
+  border: none;
+  background-color: rgb(173, 173, 173);
+  margin-top: .7rem;
+  border-radius: .2rem;
+  cursor: pointer;
+}
+
+button:first-of-type {
+    color: white;
+    background-color: #5573d3;
+}
+
+button:first-of-type:hover {
+    background-color: #3857c0;
+}
+
+button:hover {
+    background-color: rgb(128, 128, 128);
+}
+
+input {
+    padding: .4rem;
+    border: .12rem solid rgb(173, 173, 173);
+    border-radius: .2rem;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    min-width: 60vw;
+    
+}
+
+article:first-of-type {
+    border: .12rem solid rgb(173, 173, 173);
+    padding-left: 1rem;
+}
+
+article:nth-of-type(2) {
+   
+    
+}
+
+article > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1%;
+    flex-wrap: wrap;
+}
+
+article div div {
+    background-color: #303b4d;
+    padding: 0 2.5rem 0 .5rem;
+    color: white;
+}
