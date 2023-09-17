@@ -38,12 +38,12 @@ button {
   cursor: pointer;
 }
 
-button:first-of-type {
+.search {
     color: white;
     background-color: #5573d3;
 }
 
-button:first-of-type:hover {
+.search:hover {
     background-color: #3857c0;
 }
 
@@ -68,11 +68,6 @@ section {
 article:first-of-type {
     border: .12rem solid rgb(173, 173, 173);
     padding-left: 1rem;
-}
-
-article:nth-of-type(2) {
-   
-    
 }
 
 article > div {
