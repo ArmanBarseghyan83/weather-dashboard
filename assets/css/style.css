@@ -23,62 +23,79 @@ main {
 }
 
 aside {
-    margin: 0 1rem;
-    flex-basis: 22%;
+  margin: 0 1rem;
+  flex-basis: 22%;
+}
+
+aside p {
+  margin: 0.5rem;
+}
+
+aside h2 {
+  margin-bottom: 0;
 }
 
 button {
   display: block;
   width: 100%;
-  padding: .4rem;
+  padding: 0.4rem;
   border: none;
   background-color: rgb(173, 173, 173);
-  margin-top: .7rem;
-  border-radius: .2rem;
+  margin-top: 0.7rem;
+  border-radius: 0.2rem;
   cursor: pointer;
 }
 
 .search {
-    color: white;
-    background-color: #5573d3;
+  color: white;
+  background-color: #5573d3;
 }
 
 .search:hover {
-    background-color: #3857c0;
+  background-color: #3857c0;
 }
 
 button:hover {
-    background-color: rgb(128, 128, 128);
+  background-color: rgb(128, 128, 128);
 }
 
 input {
-    padding: .4rem;
-    border: .12rem solid rgb(173, 173, 173);
-    border-radius: .2rem;
-    width: 100%;
+  padding: 0.4rem;
+  border: 0.12rem solid rgb(173, 173, 173);
+  border-radius: 0.2rem;
+  width: 100%;
 }
 
 section {
-    display: flex;
-    flex-direction: column;
-    min-width: 60vw;
-    
+  display: flex;
+  flex-direction: column;
+  min-width: 60vw;
 }
 
 article:first-of-type {
-    border: .12rem solid rgb(173, 173, 173);
-    padding-left: 1rem;
+  border: 0.12rem solid rgb(173, 173, 173);
+  padding-left: 1rem;
 }
 
 article > div {
-    display: flex;
-    justify-content: space-between;
-    gap: 1%;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  gap: 1%;
+  flex-wrap: wrap;
 }
 
 article div div {
-    background-color: #303b4d;
-    padding: 0 2.5rem 0 .5rem;
-    color: white;
+  background-color: #303b4d;
+  padding: 0 2.5rem 0 0.5rem;
+  color: white;
 }
+
+section {
+  display: none;
+}
+
+.loading {
+  opacity: 0;
+  font-size: 130%;
+}
+
