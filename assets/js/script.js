@@ -45,7 +45,7 @@ const fetchForecastData = () => {
   loadingMessageEl.textContent = "Loading...";
   loadingMessageEl.style.color = "#214fe6";
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${inputEl.value}&appid=${apiKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${inputEl.value}&appid=${apiKey}`
   )
     .then((res) => {
       return res.json();
