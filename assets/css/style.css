@@ -24,14 +24,15 @@ main {
 
 aside {
   margin: 0 1rem;
-  flex-basis: 22%;
+  width: 20rem;
 }
 
 aside p {
   margin: 0.5rem;
 }
 
- h2,h3 {
+h2,
+h3 {
   margin-bottom: 0;
 }
 
@@ -67,14 +68,15 @@ input {
 }
 
 section {
-  display: flex;
+  display: none;
   flex-direction: column;
-  min-width: 60vw;
+  width: 70%
 }
 
 article:first-of-type {
   border: 0.12rem solid rgb(173, 173, 173);
   padding-left: 1rem;
+  
 }
 
 article > div {
@@ -84,14 +86,15 @@ article > div {
   flex-wrap: wrap;
 }
 
+article h3 {
+  margin: 1rem;
+}
+
 article div div {
   background-color: #303b4d;
   padding: 0 2.5rem 0 0.5rem;
+  margin-bottom: 1rem;
   color: white;
-}
-
-section {
-  display: none;
 }
 
 p {
@@ -103,3 +106,37 @@ p {
   font-size: 130%;
 }
 
+@media screen and (max-width: 990px) {
+
+  article > div {
+    justify-content: flex-start;
+  }
+
+}
+
+header h1 {
+  margin-left: 0;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 620px) {
+  
+ main {
+  flex-direction: column;
+ }
+
+ section {
+  width: 100%;
+ }
+
+ article:first-of-type {
+  border: none;
+  border-bottom: 0.12rem solid rgb(173, 173, 173);
+  padding-left: 1rem;
+}
+
+article > div {
+  justify-content: space-evenly;
+}
+}

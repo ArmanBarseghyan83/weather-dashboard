@@ -100,9 +100,9 @@ const displayForecastData = (filteredData) => {
   sectionEl.style.display = "flex";
   forecastlistEl.forEach((data, i) => {
     if (data.classList.contains("current")) {
-      data.children[0].textContent = `${filteredData[0].name.toUpperCase()} (${
+      data.children[0].innerHTML = `${filteredData[0].name.toUpperCase()} <span>(${
         filteredData[i].date
-      })`;
+      })</span>`;
     } else if (filteredData[i]) {
       data.children[0].textContent = filteredData[i].date;
     }
