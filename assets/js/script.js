@@ -8,6 +8,7 @@ const loadingMessageEl = document.querySelector(".loading");
 const apiKey = "e17df6be9e4cbbbfc725cf2b7d19d19a";
 const btnList = JSON.parse(localStorage.getItem("btn-list")) || [];
 
+// Listen for parent click event but react only if clicked a button.
 const btnClickHandler = (event) => {
   if (event.target.matches("button")) {
     if (event.target.matches(".search") && !inputEl.value) {
@@ -18,7 +19,8 @@ const btnClickHandler = (event) => {
     ) {
       inputEl.value = event.target.textContent;
     }
-
+    
+    // Delete before push to prevent repeated items.
     btnListEl.textContent = "";
     btnList.push(inputEl.value);
 
@@ -27,12 +29,13 @@ const btnClickHandler = (event) => {
   }
 };
 
+// Create unique list of buttons, store and display.
 const displayBtnList = () => {
-  const uniqBtnList = [...new Set(btnList)];
+  const uniqueBtnList = [...new Set(btnList)];
 
-  localStorage.setItem("btn-list", JSON.stringify(uniqBtnList));
+  localStorage.setItem("btn-list", JSON.stringify(uniqueBtnList));
 
-  uniqBtnList.forEach((btn) => {
+  uniqueBtnList.forEach((btn) => {
     const btnEl = document.createElement("button");
     btnEl.style.position = "relative";
     btnEl.append(btn);
@@ -40,6 +43,7 @@ const displayBtnList = () => {
   });
 };
 
+// Fetch forecast data and save in variable.
 const fetchForecastData = () => {
   loadingMessageEl.style.opacity = "1";
   loadingMessageEl.textContent = "Loading...";
@@ -61,6 +65,7 @@ const fetchForecastData = () => {
           const mapedData = data.list.map((el) => {
             const index = data.list.indexOf(el);
 
+            // Take only first repeating element.
             if (
               index !== 0 &&
               data.list[index].dt_txt.slice(0, 10) ===
@@ -90,6 +95,7 @@ const fetchForecastData = () => {
     });
 };
 
+// Display forecast data on the screan.
 const displayForecastData = (filteredData) => {
   sectionEl.style.display = "flex";
   forecastlistEl.forEach((data, i) => {
@@ -100,6 +106,8 @@ const displayForecastData = (filteredData) => {
     } else if (filteredData[i]) {
       data.children[0].textContent = filteredData[i].date;
     }
+    // Display the rest only if data is available.
+    // Sometimes during the day data is only for 5 days instead of 6.
     if (filteredData[i]) {
       data.children[1].setAttribute(
         "src",
@@ -117,4 +125,5 @@ const displayForecastData = (filteredData) => {
 
 asideEl.addEventListener("click", btnClickHandler);
 
+// Always display search history if it exist in localStorege.
 displayBtnList();
