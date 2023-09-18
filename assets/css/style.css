@@ -27,9 +27,12 @@ aside {
   width: 20rem;
 }
 
-aside p {
-  margin: 0.5rem;
+aside div:nth-of-type(1) {
+  display: flex;
+  padding: .5rem 0;
+  justify-content: space-between;
 }
+
 
 h2,
 h3 {
@@ -45,6 +48,12 @@ button {
   margin-top: 0.7rem;
   border-radius: 0.2rem;
   cursor: pointer;
+}
+
+#clear {
+  width: unset;
+  margin: 0;
+  
 }
 
 .search {
@@ -101,9 +110,10 @@ p {
   margin-top: 0;
 }
 
-.loading {
+#loading {
   opacity: 0;
   font-size: 130%;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 990px) {
@@ -120,7 +130,7 @@ header h1 {
 }
 
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 660px) {
   
  main {
   flex-direction: column;

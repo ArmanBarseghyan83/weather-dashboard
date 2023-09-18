@@ -3,14 +3,18 @@ const inputEl = document.querySelector("input");
 const btnListEl = document.querySelector(".btn-list");
 const sectionEl = document.querySelector("section");
 const forecastlistEl = document.querySelectorAll(".forecast-data");
-const loadingMessageEl = document.querySelector(".loading");
+const loadingMessageEl = document.querySelector("#loading");
 
 const apiKey = "e17df6be9e4cbbbfc725cf2b7d19d19a";
 const btnList = JSON.parse(localStorage.getItem("btn-list")) || [];
 
 // Listen for parent click event but react only if clicked a button.
 const btnClickHandler = (event) => {
-  if (event.target.matches("button")) {
+
+  if (event.target.matches("#clear")) {
+    localStorage.removeItem("btn-list");
+    location.reload();
+  } else if (event.target.matches("button")) {
     if (event.target.matches(".search") && !inputEl.value) {
       return;
     } else if (
@@ -19,7 +23,7 @@ const btnClickHandler = (event) => {
     ) {
       inputEl.value = event.target.textContent;
     }
-    
+
     // Delete before push to prevent repeated items.
     btnListEl.textContent = "";
     btnList.push(inputEl.value);
@@ -61,7 +65,8 @@ const fetchForecastData = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          document.querySelector(".loading").style.opacity = "0";
+          loadingMessageEl.style.opacity = "0";
+          inputEl.value = "";
           const mapedData = data.list.map((el) => {
             const index = data.list.indexOf(el);
 
@@ -74,7 +79,7 @@ const fetchForecastData = () => {
               return;
 
             return {
-              name: inputEl.value,
+              name: data.city.name,
               date: el.dt_txt.slice(0, 10),
               temp: (((el.main.temp - 273.15) * 9) / 5 + 32).toFixed(2),
               wind: el.wind.speed,
@@ -89,7 +94,7 @@ const fetchForecastData = () => {
     })
     .catch(() => {
       loadingMessageEl.style.opacity = "1";
-      loadingMessageEl.textContent = "No data found!";
+      loadingMessageEl.textContent = "No City Found!";
       loadingMessageEl.style.color = "#e62121";
       sectionEl.style.display = "none";
     });
@@ -100,9 +105,7 @@ const displayForecastData = (filteredData) => {
   sectionEl.style.display = "flex";
   forecastlistEl.forEach((data, i) => {
     if (data.classList.contains("current")) {
-      data.children[0].innerHTML = `${filteredData[0].name.toUpperCase()} <span>(${
-        filteredData[i].date
-      })</span>`;
+      data.children[0].textContent = `${filteredData[0].name} (${filteredData[i].date})`;
     } else if (filteredData[i]) {
       data.children[0].textContent = filteredData[i].date;
     }
