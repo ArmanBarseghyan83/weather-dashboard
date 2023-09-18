@@ -103,7 +103,7 @@ const displayForecastData = (filteredData) => {
     if (filteredData[i]) {
       data.children[1].setAttribute(
         "src",
-        `http://openweathermap.org/img/w/${filteredData[i].icon}.png`
+        `https://openweathermap.org/img/w/${filteredData[i].icon}.png`
       );
       data.children[2].innerHTML = `Temp: ${filteredData[i].temp} <span>&#x2109;</span>`;
       data.children[3].textContent = `Wind: ${filteredData[i].wind} MPH`;
