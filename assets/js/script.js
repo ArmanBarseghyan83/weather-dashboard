@@ -10,7 +10,6 @@ const btnList = JSON.parse(localStorage.getItem("btn-list")) || [];
 
 // Listen for parent click event but react only if clicked a button.
 const btnClickHandler = (event) => {
-
   if (event.target.matches("#clear")) {
     localStorage.removeItem("btn-list");
     location.reload();
@@ -70,7 +69,7 @@ const fetchForecastData = () => {
           const mapedData = data.list.map((el) => {
             const index = data.list.indexOf(el);
 
-            // Take only first repeating element.
+            //Get only first repeating elements, everything else will be undefined.
             if (
               index !== 0 &&
               data.list[index].dt_txt.slice(0, 10) ===
@@ -78,18 +77,27 @@ const fetchForecastData = () => {
             )
               return;
 
+            // Get corresponding date for different time zones
+            const date = dayjs(el.dt_txt.slice(0, 10)).subtract(
+              data.city.timezone / 60,
+              "minute"
+            );
+            const formattedDate = date.format("DD/MM/YYYY");
+
             return {
               name: data.city.name,
-              date: el.dt_txt.slice(0, 10),
+              date: formattedDate,
               temp: (((el.main.temp - 273.15) * 9) / 5 + 32).toFixed(2),
               wind: el.wind.speed,
               humidity: el.main.humidity,
               icon: el.weather[0].icon,
             };
           });
-          const filteredData = mapedData.filter((data) => data !== undefined);
 
+          const filteredData = mapedData.filter((data) => data !== undefined);
+          
           displayForecastData(filteredData);
+          
         });
     })
     .catch(() => {
