@@ -64,6 +64,7 @@ const fetchForecastData = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           loadingMessageEl.style.opacity = "0";
           inputEl.value = "";
           const mapedData = data.list.map((el) => {
@@ -78,12 +79,13 @@ const fetchForecastData = () => {
               return;
 
             // Get corresponding date for different time zones
+            const offset = dayjs(data.list[index].dt_txt).utcOffset(data.city.timezone)
             const date = dayjs(el.dt_txt.slice(0, 10)).subtract(
-              -data.city.timezone / 60,
+              offset,
               "minute"
             );
             const formattedDate = date.format("DD/MM/YYYY");
-
+            
             return {
               name: data.city.name,
               date: formattedDate,
@@ -95,7 +97,7 @@ const fetchForecastData = () => {
           });
 
           const filteredData = mapedData.filter((data) => data !== undefined);
-
+          
           displayForecastData(filteredData);
         });
     })
@@ -137,3 +139,4 @@ asideEl.addEventListener("click", btnClickHandler);
 
 // Always display search history if it exist in localStorege.
 displayBtnList();
+
