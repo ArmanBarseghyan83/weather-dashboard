@@ -79,7 +79,7 @@ const fetchForecastData = () => {
 
             // Get corresponding date for different time zones
             const date = dayjs(el.dt_txt.slice(0, 10)).subtract(
-              data.city.timezone / 60,
+              -data.city.timezone / 60,
               "minute"
             );
             const formattedDate = date.format("DD/MM/YYYY");
@@ -95,9 +95,8 @@ const fetchForecastData = () => {
           });
 
           const filteredData = mapedData.filter((data) => data !== undefined);
-          
+
           displayForecastData(filteredData);
-          
         });
     })
     .catch(() => {
