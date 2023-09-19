@@ -79,9 +79,8 @@ const fetchForecastData = () => {
               return;
 
             // Get corresponding date for different time zones
-            const offset = dayjs(data.list[index].dt_txt).utcOffset(data.city.timezone)
             const date = dayjs(el.dt_txt.slice(0, 10)).subtract(
-              offset,
+              -data.city.timezone/60,
               "minute"
             );
             const formattedDate = date.format("DD/MM/YYYY");
