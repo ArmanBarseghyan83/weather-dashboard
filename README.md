@@ -2,7 +2,7 @@
 
 ## Description
 
-This project taught me how fetch data from 3rd party API and display on browsers page.
+This project fetches data from a 3rd party API and displays it on the browser's page.
 
 ## Usage
 
@@ -12,8 +12,8 @@ Go to [Weather Dashboard](https://armanbarseghyan83.github.io/weather-dashboard/
 
 ![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/images/screenshot.png)
 
-## Credits
-
-Throughout this past year, I have completed different online courses and have previous programming experience by building my portfolio projects.
-
-Please see my [Portfolio](https://armanbarseghyan83.github.io/portfolio/).
+## Questions
+### Use the links below if you have any questions.
+- Email Address - [armanbarseghyan83@gmail.com](mailto:armanbarseghyan83@gmail.com)
+- Linkedin - [https://www.linkedin.com/in/arman-barseghyan](https://www.linkedin.com/in/arman-barseghyan)
+- GitHub Profile - [https://github.com/ArmanBarseghyan83](https://github.com/ArmanBarseghyan83)
